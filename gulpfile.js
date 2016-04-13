@@ -12,7 +12,8 @@ var bower 			= require('gulp-bower');
 var notify 			= require('gulp-notify');
 
 var config = {
-    sassPath: 'src/scss/**/*.scss',
+    htmlPath: '*.html',
+    sassPath: 'src/scss/*.scss',
     jsPath: 'src/js/**/*.js',
     imagesPath: 'src/images/**/*.+(png|jpg|gif|svg)',
     fontsPath: 'src/fonts/**/*',
@@ -32,14 +33,18 @@ gulp.task('icons', function() {
 
 gulp.task('css', function() {
   return gulp.src(config.sassPath)
-    .pipe(sass({
-            style: 'compressed',
-            loadPath: [
-                config.sassPath,
-                // config.bowerDir + '/bootstrap-sass-official/assets/stylesheets',
-                // config.bowerDir + '/fontawesome/scss',
-            ]
-        })
+    .pipe(
+    	sass
+    	(
+	    	/*{
+	            style: 'compressed',
+	            loadPath: [
+	                config.sassPath,
+	                // config.bowerDir + '/bootstrap-sass-official/assets/stylesheets',
+	                // config.bowerDir + '/fontawesome/scss',
+	            ]
+	        }*/
+	    )
     	.on("error", notify.onError(function (error) {
                 return "Error: " + error.message;
         }))
@@ -60,16 +65,23 @@ gulp.task('js', function() {
     }))
 })
 
-gulp.task('watch', ['browserSync', 'css','js','fonts', 'icons','images'], function() {
+gulp.task('watch', ['browserSync', 'css','js', 'html','fonts', 'icons','images'], function() {
   gulp.watch(config.sassPath, ['css']);
   gulp.watch(config.jsPath, ['js']);
+  gulp.watch(config.htmlPath, ['html']);
   gulp.watch('*.html', browserSync.reload);
+  gulp.watch(config.sassPath, browserSync.reload);
   gulp.watch(config.jsPath, browserSync.reload);
 })
 
 gulp.task('fonts', function() {
   return gulp.src(config.fontsPath)
   .pipe(gulp.dest('assets/fonts'))
+})
+
+gulp.task('html', function() {
+  return gulp.src(config.htmlPath)
+  .pipe(gulp.dest('assets'))
 })
 
 gulp.task('images', function(){
@@ -95,7 +107,7 @@ gulp.task('clean:js', function() {
 
 gulp.task('default', function(callback) {
 	runSequence(
-		['css', 'js', 'images', 'fonts', 'icons', 'browserSync', 'watch'],
+		['css', 'js', 'html', 'images', 'fonts', 'icons', 'browserSync', 'watch'],
     	callback
   	)
 })
@@ -104,7 +116,7 @@ gulp.task('build', function(callback) {
   runSequence(
   	'clean:css',
   	'clean:js',
-  	['css', 'js', 'images', 'fonts', 'icons', 'browserSync', 'watch'],
+  	['css', 'js', 'html', 'images', 'fonts', 'icons', 'browserSync', 'watch'],
     callback
   )
 })
