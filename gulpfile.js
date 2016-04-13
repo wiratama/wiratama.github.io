@@ -25,7 +25,8 @@ gulp.task('bower', function() {
 });
 
 gulp.task('icons', function() {
-    return gulp.src(config.bowerDir + '/fontawesome/fonts/**.*')
+    // return gulp.src(config.bowerDir + '/fontawesome/fonts/**.*')
+    return gulp.src(config.fontsPath)
         .pipe(gulp.dest('./public/fonts'));
 });
 
@@ -35,8 +36,8 @@ gulp.task('css', function() {
             style: 'compressed',
             loadPath: [
                 config.sassPath,
-                config.bowerDir + '/bootstrap-sass-official/assets/stylesheets',
-                config.bowerDir + '/fontawesome/scss',
+                // config.bowerDir + '/bootstrap-sass-official/assets/stylesheets',
+                // config.bowerDir + '/fontawesome/scss',
             ]
         })
     	.on("error", notify.onError(function (error) {
