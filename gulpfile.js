@@ -25,11 +25,11 @@ gulp.task('bower', function() {
         .pipe(gulp.dest(config.bowerDir))
 });
 
-gulp.task('icons', function() {
+/*gulp.task('icons', function() {
     // return gulp.src(config.bowerDir + '/fontawesome/fonts/**.*')
     return gulp.src(config.fontsPath)
         .pipe(gulp.dest('./public/fonts'));
-});
+});*/
 
 gulp.task('css', function() {
   return gulp.src(config.sassPath)

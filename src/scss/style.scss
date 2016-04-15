@@ -1,9 +1,11 @@
 $lead_title_font_stack:effra_lightregular;
-$lead_title_font_size:55px;
+$lead_title_font_size:45px;
 $main_bg_color: #171201;
 $emerald_bg_color: #3FC380;
 $gossip_bg_color: #87D37C;
-$primary-color: #333;
+$green_primary_color: #00B16A;
+$black_primary_color: #333;
+$white_color: #fff;
 
 .floor-1 {
 	#particles-js{
@@ -14,22 +16,68 @@ $primary-color: #333;
 		background-position: 50% 50%;
 		background-repeat: no-repeat;
 	}
+    h1.home-lead {
+        color: $white_color;
+        font-family: $lead_title_font_stack, Helvetica, Arial, sans-serif;
+        position: absolute;
+        top: 50%;
+        width: 100%;
+        text-align: center;
+        .lead-green {
+            color: $green_primary_color;
+        }
+    }
+    p.head-intro {
+        color: $white_color;
+        font-family: $lead_title_font_stack, Helvetica, Arial, sans-serif;
+        position: absolute;
+        top: 65%;
+        width: 100%;
+        text-align: center;
+        font-size: 22px;
+        .lead-green {
+            color: $green_primary_color;
+        }
+    }
 }
 
 .floor-2 {
 	background-color: #fff;
 	width: 100%;
 	padding: 35px 0;
-    text-align: center;
     .lead-title {
-        font-family: $lead_title_font_stack;
+        font-family: $lead_title_font_stack, Helvetica, Arial, sans-serif;
 		font-size: $lead_title_font_size;
-		border-bottom: 3px solid $main_bg_color;
-        margin-bottom: 25px;
+        margin-bottom: 30px;
+        position: relative;
+        z-index: 1;
+        padding: 0 20px;
+        background-color: #fff;
 	}
+    .line {
+        position: absolute;
+        left: 75%;
+        top: 29px;
+        margin-left: -80%;
+        height: 2px;
+        width: 38%;
+        background-color: $black_primary_color;
+        z-index: 0;
+    }
     .content {
-        margin: 25px 0 0 0;
+        margin: 25px -45px 0 -45px;
         font-size: 15px;
+        background-color: #DAFDD5;
+        padding: 14px 31px 33px 35px;
+        max-width: 65%;
+        p.bio-title {
+            font-family: "montserratlight", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            color: #666;
+        }
+        p.intro {
+            font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            color: #666;
+        }
     }
 }
 
@@ -37,18 +85,26 @@ $primary-color: #333;
     background-color: $gossip_bg_color;
     width: 100%;
     padding: 35px 0;
-    text-align: center;
     color: #fff;
-    .lead-title {
-        font-family: $lead_title_font_stack;
+    h2.lead-title {
+        text-align: center;
+        font-family: $lead_title_font_stack, Helvetica, Arial, sans-serif;
         font-size: $lead_title_font_size;
-        border-bottom: 3px solid #fff;
-        margin-bottom: 25px;
+        margin-bottom: 30px;
     }
     .content {
         margin: 25px 0 0 0;
         font-size: 15px;
     }
+}
+
+/* divider */
+hr.divider {
+    padding: 0;
+    height: 2px;
+    border: 0;
+    width: 45px;
+    margin: 0px;
 }
 
 /* fonts variable*/
@@ -99,6 +155,33 @@ $primary-color: #333;
          url('../fonts/effra_std_bdit-webfont.woff') format('woff'),
          url('../fonts/effra_std_bdit-webfont.ttf') format('truetype'),
          url('../fonts/effra_std_bdit-webfont.svg#effrabold_italic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'montserratlight';
+    src: url('../fonts/montserrat-light-webfont.eot');
+    src: url('../fonts/montserrat-light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/montserrat-light-webfont.woff2') format('woff2'),
+         url('../fonts/montserrat-light-webfont.woff') format('woff'),
+         url('../fonts/montserrat-light-webfont.ttf') format('truetype'),
+         url('../fonts/montserrat-light-webfont.svg#montserratlight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+@font-face {
+    font-family: 'montserratregular';
+    src: url('../fonts/montserrat-regular-webfont.eot');
+    src: url('../fonts/montserrat-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/montserrat-regular-webfont.woff2') format('woff2'),
+         url('../fonts/montserrat-regular-webfont.woff') format('woff'),
+         url('../fonts/montserrat-regular-webfont.ttf') format('truetype'),
+         url('../fonts/montserrat-regular-webfont.svg#montserratregular') format('svg');
     font-weight: normal;
     font-style: normal;
 
