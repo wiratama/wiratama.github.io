@@ -69,6 +69,7 @@ gulp.task('watch', ['browserSync', 'css','js', 'html','fonts', 'icons','images']
   gulp.watch(config.sassPath, ['css']);
   gulp.watch(config.jsPath, ['js']);
   gulp.watch(config.htmlPath, ['html']);
+  gulp.watch(config.fontsPath, ['fonts']);
   gulp.watch('*.html', browserSync.reload);
   gulp.watch(config.sassPath, browserSync.reload);
   gulp.watch(config.jsPath, browserSync.reload);
