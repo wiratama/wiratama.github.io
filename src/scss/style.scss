@@ -1,6 +1,8 @@
 $lead_title_font_stack:effra_lightregular;
 $lead_title_font_size:55px;
 $main_bg_color: #171201;
+$emerald_bg_color: #3FC380;
+$gossip_bg_color: #87D37C;
 $primary-color: #333;
 
 .floor-1 {
@@ -18,13 +20,31 @@ $primary-color: #333;
 	background-color: #fff;
 	width: 100%;
 	padding: 35px 0;
-	text-align: center;
-	.lead-title {
+    text-align: center;
+    .lead-title {
         font-family: $lead_title_font_stack;
 		font-size: $lead_title_font_size;
 		border-bottom: 3px solid $main_bg_color;
         margin-bottom: 25px;
 	}
+    .content {
+        margin: 25px 0 0 0;
+        font-size: 15px;
+    }
+}
+
+.floor-3 {
+    background-color: $gossip_bg_color;
+    width: 100%;
+    padding: 35px 0;
+    text-align: center;
+    color: #fff;
+    .lead-title {
+        font-family: $lead_title_font_stack;
+        font-size: $lead_title_font_size;
+        border-bottom: 3px solid #fff;
+        margin-bottom: 25px;
+    }
     .content {
         margin: 25px 0 0 0;
         font-size: 15px;
