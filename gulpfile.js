@@ -12,12 +12,12 @@ var bower 			= require('gulp-bower');
 var notify 			= require('gulp-notify');
 
 var config = {
-    htmlPath: '*.html',
+    htmlPath: 'src/*.html',
     sassPath: 'src/scss/*.scss',
     jsPath: 'src/js/**/*.js',
     imagesPath: 'src/images/**/*.+(png|jpg|gif|svg)',
     fontsPath: 'src/fonts/**/*',
-    bowerDir: './bower_components'
+    bowerDir: 'bower_components'
 }
 
 gulp.task('bower', function() {
@@ -25,41 +25,49 @@ gulp.task('bower', function() {
         .pipe(gulp.dest(config.bowerDir))
 });
 
-/*gulp.task('icons', function() {
-    // return gulp.src(config.bowerDir + '/fontawesome/fonts/**.*')
-    return gulp.src(config.fontsPath)
-        .pipe(gulp.dest('./public/fonts'));
-});*/
+gulp.task('icons', function() {
+    return gulp.src(config.bowerDir + '/fontawesome/fonts/**.*')
+    // return gulp.src(config.fontsPath)
+        .pipe(gulp.dest('apps/fonts'));
+});
 
 gulp.task('css', function() {
   return gulp.src(config.sassPath)
     .pipe(
     	sass
     	(
-	    	/*{
+	    	{
 	            style: 'compressed',
-	            loadPath: [
+	            includePaths: [
 	                config.sassPath,
-	                // config.bowerDir + '/bootstrap-sass-official/assets/stylesheets',
-	                // config.bowerDir + '/fontawesome/scss',
+	                config.bowerDir + '/bootstrap-sass-official/assets/stylesheets',
+	                config.bowerDir + '/fontawesome/scss',
 	            ]
-	        }*/
+	        }
 	    )
     	.on("error", notify.onError(function (error) {
                 return "Error: " + error.message;
         }))
     )
+    // .pipe(autoprefixer('last 2 version'))
     .pipe(cssnano())
-    .pipe(gulp.dest('assets/css'))
+    .pipe(gulp.dest('apps/css'))
     .pipe(browserSync.reload({
     	stream: true
     }))
 })
 
 gulp.task('js', function() {
-  return gulp.src(config.jsPath)
+  return gulp.src(
+    // config.jsPath
+      [
+          config.jsPath,
+          config.bowerDir + '/bootstrap-sass-official/assets/javascripts/*.js',
+          config.bowerDir + '/jquery/dist/*.js',
+      ]
+    )
     .pipe(uglify())
-    .pipe(gulp.dest('assets/js'))
+    .pipe(gulp.dest('apps/js'))
     .pipe(browserSync.reload({
     	stream: true
     }))
@@ -70,40 +78,59 @@ gulp.task('watch', ['browserSync', 'css','js', 'html','fonts', 'icons','images']
   gulp.watch(config.jsPath, ['js']);
   gulp.watch(config.htmlPath, ['html']);
   gulp.watch(config.fontsPath, ['fonts']);
+  gulp.watch(config.imagesPath, ['images']);
   gulp.watch('*.html', browserSync.reload);
   gulp.watch(config.sassPath, browserSync.reload);
   gulp.watch(config.jsPath, browserSync.reload);
 })
 
 gulp.task('fonts', function() {
-  return gulp.src(config.fontsPath)
-  .pipe(gulp.dest('assets/fonts'))
+  return gulp.src(
+      // config.fontsPath
+      // {
+        // includePaths: 
+        [
+            config.fontsPath,
+            config.bowerDir + '/bootstrap-sass-official/assets/fonts/**/*',
+            config.bowerDir + '/fontawesome/fonts/**/*',
+        ]
+      // }
+    )
+  .pipe(gulp.dest('apps/fonts'))
 })
 
 gulp.task('html', function() {
   return gulp.src(config.htmlPath)
-  .pipe(gulp.dest('assets'))
+  .pipe(gulp.dest('apps'))
 })
 
 gulp.task('images', function(){
   return gulp.src(config.imagesPath)
-  .pipe(gulp.dest('assets/images'))
+  .pipe(gulp.dest('apps/images'))
 });
 
 gulp.task('browserSync', function() {
   browserSync.init({
     server: {
-      baseDir: 'assets'
+      baseDir: 'apps'
     },
   })
 })
 
 gulp.task('clean:css', function() {
-  return del.sync('assets/css');
+  return del.sync('apps/css');
 })
 
 gulp.task('clean:js', function() {
-  return del.sync('assets/js');
+  return del.sync('apps/js');
+})
+
+gulp.task('clean:fonts', function() {
+  return del.sync('apps/fonts');
+})
+
+gulp.task('clean:images', function() {
+  return del.sync('apps/images');
 })
 
 gulp.task('default', function(callback) {
@@ -116,7 +143,9 @@ gulp.task('default', function(callback) {
 gulp.task('build', function(callback) {
   runSequence(
   	'clean:css',
-  	'clean:js',
+    'clean:js',
+    'clean:fonts',
+  	'clean:images',
   	['css', 'js', 'html', 'images', 'fonts', 'icons', 'browserSync', 'watch'],
     callback
   )

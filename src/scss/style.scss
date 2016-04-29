@@ -1,11 +1,7 @@
-$lead_title_font_stack:effra_lightregular;
-$lead_title_font_size:45px;
-$main_bg_color: #171201;
-$emerald_bg_color: #3FC380;
-$gossip_bg_color: #87D37C;
-$green_primary_color: #00B16A;
-$black_primary_color: #333;
-$white_color: #fff;
+// @import url(http://fonts.googleapis.com/css?family=Raleway:400,700,300);
+@import "bootstrap";
+@import "font-awesome";
+@import "variables_style";
 
 .floor-1 {
 	#particles-js{
@@ -20,7 +16,7 @@ $white_color: #fff;
         color: $white_color;
         font-family: $lead_title_font_stack, Helvetica, Arial, sans-serif;
         position: absolute;
-        top: 50%;
+        top: 40%;
         width: 100%;
         text-align: center;
         .lead-green {
@@ -31,7 +27,7 @@ $white_color: #fff;
         color: $white_color;
         font-family: $lead_title_font_stack, Helvetica, Arial, sans-serif;
         position: absolute;
-        top: 65%;
+        top: 55%;
         width: 100%;
         text-align: center;
         font-size: 22px;
@@ -45,6 +41,12 @@ $white_color: #fff;
 	background-color: #fff;
 	width: 100%;
 	padding: 35px 0;
+    margin: 30px 0 0 0;
+    .bio-img img {
+        min-height: 350px;
+        max-height: 550px;
+        float: right;
+    }
     .lead-title {
         font-family: $lead_title_font_stack, Helvetica, Arial, sans-serif;
 		font-size: $lead_title_font_size;
@@ -65,7 +67,7 @@ $white_color: #fff;
         z-index: 0;
     }
     .content {
-        margin: 25px -45px 0 -45px;
+        margin: 25px -58px 0 -45px;
         font-size: 15px;
         background-color: #DAFDD5;
         padding: 14px 31px 33px 35px;
