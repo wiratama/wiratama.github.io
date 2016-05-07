@@ -4,13 +4,13 @@
 @import "variables_style";
 
 body {
-    background-color: $green_body_primary_color;
+    background-color: #fff;
 }
 
 
 // 1st floor
 .floor-1 {
-	#particles-js{
+	#hero-particles{
 		width: 100%;
 		/*height: 100%;*/
 		background-color: $main_bg_color;
@@ -46,7 +46,7 @@ body {
 
 // 2nd floor
 .floor-2 {
-	// background-color: #fff;
+	background-color: #fff;
 	width: 100%;
 	padding: 35px 0;
     margin: 30px 0 0 0;
@@ -85,7 +85,7 @@ body {
             position: relative;
             z-index: 1;
             padding: 0 20px;
-            background-color: $green_body_primary_color;
+            background-color: #fff;
             color: $semi_black_primary_color;
         }
         .line {
@@ -102,13 +102,15 @@ body {
 
 // 3rd floor
 .floor-3 {
+    background-color: $green_body_primary_color;
     width: 100%;
     padding: 35px 0;
+    
     .wraper-lead-title {
         display: table-cell;
-        // vertical-align: middle;
-        width: 250px;
-        // text-align: center;
+        vertical-align: middle;
+        width: 300px;
+        text-align: center;
         .lead-title {
             font-family: $lead_title_font_stack, Helvetica, Arial, sans-serif;
             font-size: 45px;
@@ -122,24 +124,80 @@ body {
         }
         .line {
             position: absolute;
-            top: 7%;
-            margin-left: -34%;
+            top: 50%;
+            margin-left: -21%;
             height: 2px;
-            width: 42%;
+            width: 23%;
             background-color: $soft_green_primary_color;
             z-index: 0;
         }
     }
+    
     .portfolio-description {
         font-size: 15px;
         padding: 18px 25px 0px 0px;
-        // display: table-cell;
+        display: table-cell;
         p.intro {
-            font-family: 'vogamedium', Helvetica, Arial, sans-serif;
-            font-size: 30px;
+            font-family: 'moonlight', Helvetica, Arial, sans-serif;
+            font-size: 22px;
             color: $text_green_primary_color;
-            .brown {
+            .green {
                 color: $soft_green_primary_color;
+            }
+        }
+    }
+    
+    .portfolio-list {
+        width: 100%;
+        
+        .col-left {
+            width: 50%;
+            float: left;
+            
+            .portfolio-preview {
+                background-image: url(../images/folio4.jpg);
+                background-position: center center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                position: relative;
+                display: inline-block;
+                overflow: hidden;
+                vertical-align: top;
+                color: #fff;
+                font-family: 'moonlight', Helvetica, Arial, sans-serif;
+                width: 100%;
+
+                .folio-content {
+                    width: calc(100% - 30px - 60px);
+                    padding-left: 20px;
+                    text-align: left;
+
+                    .folio-title {
+                        margin-bottom: 20px;
+                        font-weight: 700;
+                        text-transform: uppercase;
+                    }
+                }
+            }
+        }
+        
+        .col-right {
+            height: 100%;
+            width: 50%;
+            float: left;
+            
+            .box-top-right {
+                background-color: $coklat_primary_color;
+                    position: relative;
+                    display: inline-block;
+                    vertical-align: top;
+            }
+            
+            .box-bottom-right {
+                background-color: $gossip_bg_color;
+                    position: relative;
+                    display: inline-block;
+                    vertical-align: top;
             }
         }
     }
@@ -243,6 +301,32 @@ hr.divider {
          url('../fonts/voga-medium-webfont.woff') format('woff'),
          url('../fonts/voga-medium-webfont.ttf') format('truetype'),
          url('../fonts/voga-medium-webfont.svg#vogamedium') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'moonbold';
+    src: url('../fonts/moon_bold-webfont.eot');
+    src: url('../fonts/moon_bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/moon_bold-webfont.woff2') format('woff2'),
+         url('../fonts/moon_bold-webfont.woff') format('woff'),
+         url('../fonts/moon_bold-webfont.ttf') format('truetype'),
+         url('../fonts/moon_bold-webfont.svg#moonbold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'moonlight';
+    src: url('../fonts/moon_light-webfont.eot');
+    src: url('../fonts/moon_light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/moon_light-webfont.woff2') format('woff2'),
+         url('../fonts/moon_light-webfont.woff') format('woff'),
+         url('../fonts/moon_light-webfont.ttf') format('truetype'),
+         url('../fonts/moon_light-webfont.svg#moonlight') format('svg');
     font-weight: normal;
     font-style: normal;
 
